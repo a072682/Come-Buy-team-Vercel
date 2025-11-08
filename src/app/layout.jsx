@@ -17,8 +17,8 @@ import './globals.scss';
 import Header from '@/components/common/Header/Header';
 import Footer from '@/components/common/Footer/Footer';
 import Providers from '@/providers/roviders';
-import NavSpace from '@/components/common/navSpace/navSpace';
 import ModalRoot from '@/components/common/ModalRoot/ModalRoot';
+import NavSpace from '@/components/common/navSpace/NavSpace';
 //元件區
 
 
