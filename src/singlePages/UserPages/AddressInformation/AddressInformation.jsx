@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import './_AddressInformation.scss';
-import CountryDropdown from './countryDropdown/countryDropdown';
+import CountryDropdown from './countryDropdown/CountryDropdown';
 import { useDispatch } from 'react-redux';
 
 import { AnimatePresence, motion } from 'framer-motion';
