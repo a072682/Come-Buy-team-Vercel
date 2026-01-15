@@ -4,7 +4,7 @@
 // 引入環境變數
 import cloudinary from "../utils/cloudinary/cloudinaryConfig";
 
-export async function getImageInfo(public_id) {
+export async function getSingleImage(public_id) {
 
   if (!public_id) {
     throw new Error("public_id 不存在，無法取得圖片資訊");

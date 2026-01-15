@@ -1,5 +1,6 @@
+
 import { NextResponse } from "next/server";
-import { getImageInfo } from "@/apiData/cloudinary/getImageInfo";
+import { getSingleImage } from "@/apiData/cloudinary/getSingleImage";
 
 export async function GET(req) {
   try {
@@ -15,7 +16,7 @@ export async function GET(req) {
       );
     }
 
-    const imageInfo = await getImageInfo(public_id);
+    const imageInfo = await getSingleImage(public_id);
 
     if (!imageInfo) {
       return NextResponse.json(
