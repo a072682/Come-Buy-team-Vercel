@@ -1,9 +1,12 @@
 
 import './_Login.scss';
 import { useEffect, useId, useState } from "react" //useRef 移除
-import { checkLogin, loginUser, userGoogleLogin } from "@/store/slice/authSlice";
+import { auth_providerDataUp, avatarDataUp, avatarIdDataUp, emailDataUp, login, loginUser, usernameDataUp } from "@/store/slice/authSlice";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
+import axios from 'axios';
+import { userLoginCounter } from '@/store/slice/userSlice';
+import { getProfile } from '@/store/slice/profileSlice';
 
 
 
@@ -94,9 +97,33 @@ function Login ({onClose, onSwitch}){
             }
             // 有錯就中斷，不要送出
             try{
+                
+
                 await dispatch(loginUser(account)).unwrap();
-                // console.log("成功登入:", data);
-                await dispatch(checkLogin()).unwrap();
+                //console.log("成功登入:", data);
+
+                // 本地登入確認api
+                const checkLoginRef = await axios.post(`/api/auth/loginCheck`);
+                //console.log("登入確認成功",checkLoginRef.data);
+                //更新登入者名稱內容
+                dispatch(usernameDataUp(checkLoginRef?.data.user.username));
+                //更新登入者信箱資料
+                dispatch(emailDataUp(checkLoginRef?.data.user.email));
+                //更新登入者來源
+                dispatch(auth_providerDataUp(checkLoginRef?.data.user.auth_provider));
+                //更新登入者頭像內容
+                dispatch(avatarDataUp(checkLoginRef?.data.user.avatarUrl || 
+                checkLoginRef?.data.user.google_avatar_url || null));
+                //更新登入者頭像圖片id
+                dispatch(avatarIdDataUp(checkLoginRef?.data.user.avatarId || null));
+                //執行登入計數api
+                dispatch(userLoginCounter());
+                //執行取得會員個人詳細資料api
+                dispatch(getProfile());
+                //執行登陸狀態改變api
+                dispatch(login());
+                // 本地登入確認api
+                
                 //由外部關閉
                 onClose?.();
                 router.push("/");
@@ -113,30 +140,6 @@ function Login ({onClose, onSwitch}){
                 setErrorMsg(error.error);
             }
         }
-    //#endregion
-    
-    //#region 控制上一頁問題 整個移除
-        //控制上一頁問題
-            // useEffect(() => {
-            //     if (loginModalShow || registerPageModalShow) {
-            //         document.body.style.overflow = "hidden"; // 🔒 禁止滾動
-            //         console.log("滾動鎖住");
-            //     }else if(!loginModalShow && !registerPageModalShow){
-            //         document.body.style.overflow = "auto"; // ✅ 恢復滾動
-            //         console.log("滾動解除");
-            //     }
-            //     return () => {
-            //         console.log("組件解散");
-            //         setAccount({
-            //             email:"",
-            //             password:""
-            //         });
-            //         setEmailErrorMsg("");
-            //         setPassWordErrorMsg("");
-            //         setErrorMsg("");
-            //     };
-            // }, [loginModalShow,registerPageModalShow]);
-        //控制上一頁問題
     //#endregion
 
     //#region google登入api

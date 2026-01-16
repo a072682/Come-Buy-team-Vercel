@@ -23,7 +23,7 @@ function UserDropdown() {
       })
 
       useEffect(()=>{
-          console.log("頭像資料:",avatarUrl);
+          //console.log("頭像資料:",avatarUrl);
       },[avatarUrl])
   //#endregion
 
@@ -45,7 +45,7 @@ function UserDropdown() {
   const handleLogoutUser = async()=>{
     try{
       await axios.post(`/api/auth/logoutUser`);
-      console.log("登出成功");
+      //console.log("登出成功");
       dispatch(logout());
       router.push('/');
       setShow(false);

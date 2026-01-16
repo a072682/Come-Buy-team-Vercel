@@ -19,7 +19,7 @@ function OffcanvasUser({handleClose}) {
     const handleLogoutUser = async()=>{
         try{
             await axios.post(`/api/auth/logoutUser`);
-            console.log("登出成功");
+            //console.log("登出成功");
             dispatch(logout());
             router.push('/');
             handleClose();

@@ -67,7 +67,7 @@ export const authSlice = createSlice({
             async (newUserDATA,{ dispatch, rejectWithValue }) => {
                 try {
                     const createUserDataRef = await axios.post(`/api/auth/registerUser`,newUserDATA);
-                    console.log("創建會員成功",createUserDataRef.data);
+                    //console.log("創建會員成功",createUserDataRef.data);
                     dispatch(createProfile());
                     dispatch(logout());
                 } catch (error) {
@@ -85,7 +85,7 @@ export const authSlice = createSlice({
             async (account, { dispatch, rejectWithValue }) => {
                 try {
                     const handleLoginRef = await axios.post(`/api/auth/loginUser`, account);
-                    console.log("登入成功",handleLoginRef.data);
+                    //console.log("登入成功",handleLoginRef.data);
                     // 存到 localStorage
                     localStorage.setItem('token', handleLoginRef.data.token);
                     dispatch(login());
@@ -107,7 +107,7 @@ export const authSlice = createSlice({
                 async (_,{ dispatch }) => {
                 try {
                         const checkLoginRef = await axios.post(`/api/auth/loginCheck`);
-                        console.log("登入確認成功",checkLoginRef.data);
+                        //console.log("登入確認成功",checkLoginRef.data);
 
                         //更新登入者名稱內容
                         dispatch(usernameDataUp(checkLoginRef?.data.user.username));
@@ -115,11 +115,13 @@ export const authSlice = createSlice({
                         dispatch(emailDataUp(checkLoginRef?.data.user.email));
                         //更新登入者來源
                         dispatch(auth_providerDataUp(checkLoginRef?.data.user.auth_provider));
+                        //更新登入者頭像內容
                         dispatch(avatarDataUp(checkLoginRef?.data.user.avatarUrl || 
                         checkLoginRef?.data.user.google_avatar_url || null));
+                        //更新登入者頭像圖片id
                         dispatch(avatarIdDataUp(checkLoginRef?.data.user.avatarId || null));
                         //執行登入計數api
-                        dispatch(userLoginCounter());
+                        //dispatch(userLoginCounter());
                         //執行取得會員個人詳細資料api
                         dispatch(getProfile());
                         //執行登陸狀態改變api
@@ -138,7 +140,7 @@ export const authSlice = createSlice({
             async (_, { dispatch }) => {
                 try {
                     const handleLogoutRef = await axios.post(`/api/auth/logoutUser`);
-                    console.log("登出成功",handleLogoutRef.data);
+                    //console.log("登出成功",handleLogoutRef.data);
                     dispatch(logout());
                 } catch (error) {
                     console.log("登出失敗");

@@ -44,10 +44,10 @@ function Header(){
     //#region 連線測試
     useEffect(() => {
         if(linkState){
-            console.log("連線成功敲擊結束");
+            //console.log("連線成功敲擊結束");
             return;
         }else if(!linkState){
-            console.log("執行敲擊");
+            //console.log("執行敲擊");
             // 每兩秒執行一次
             const timeId = setInterval(() => {
                 dispatch(linkTest());

@@ -96,7 +96,7 @@ export  const {
         async (_, { dispatch,rejectWithValue }) => {
             try {
                 const getOrderRes = await axios.get("/api/order/getOrder");
-                console.log("取得訂單成功", getOrderRes.data);
+                //console.log("取得訂單成功", getOrderRes.data);
                 dispatch(allOrderDataUpLoad(getOrderRes.data.orderData));
                 return getOrderRes.data.orderData;
             } catch (error) {

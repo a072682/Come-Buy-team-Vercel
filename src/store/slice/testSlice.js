@@ -30,7 +30,7 @@ export const testSlice = createSlice({
                 dispatch(linkStateFalse()); 
                 try {
                     const response = await axios.get(`/api/testLink`);
-                    console.log("連線成功",response.data);
+                    //console.log("連線成功",response.data);
                     dispatch(linkStateTrue()); 
                     return(response.data);
                 } catch (error) {

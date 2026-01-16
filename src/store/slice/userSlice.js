@@ -25,7 +25,7 @@ export const userSlice = createSlice({
         async (_,{ dispatch, rejectWithValue }) => {
             try {
                 const userLoginCounterRef = await axios.post(`/api/user/userLoginCounter`);
-                console.log("登入計數成功",userLoginCounterRef.data.message);
+                //console.log("登入計數成功",userLoginCounterRef.data.message);
                 return(userLoginCounterRef.data.message);
             } catch (error) {
                 console.log("登入計數失敗",error.response.data);
@@ -41,10 +41,10 @@ export const userSlice = createSlice({
         async ({ oldPassword, newPassword },{ dispatch, rejectWithValue }) => {
             try {
                 const updateUserPasswordRes = await axios.put("/api/user/updatePassword",{ oldPassword,newPassword,});
-                console.log("修改密碼成功",updateUserPasswordRes.data.message);
+                //console.log("修改密碼成功",updateUserPasswordRes.data.message);
                 return updateUserPasswordRes.data.message;
             } catch (error) {
-                console.log("登入計數失敗",error.response.data);
+                console.log("修改密碼失敗",error.response.data);
                 return rejectWithValue(error.response?.data || error.message);
             }
         }
@@ -57,7 +57,7 @@ export const userSlice = createSlice({
         async ({ username, email },{ dispatch, rejectWithValue }) => {
             try {
                 const userDataUpChangeRes = await axios.put("/api/user/userDataUpChange", {username,email});
-                console.log("更新會員資料成功",userDataUpChangeRes.data.message);
+                //console.log("更新會員資料成功",userDataUpChangeRes.data.message);
                 return userDataUpChangeRes.data;
             } catch (error) {
                 console.log("更新會員資料失敗",error.response.data);

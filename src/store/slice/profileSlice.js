@@ -30,7 +30,7 @@ export const profileSlice = createSlice({
         async (_, { dispatch,rejectWithValue }) => {
             try {
                 const getProfileRes = await axios.get("/api/profile/getProfile");
-                console.log("取得登錄者個人資料成功",getProfileRes.data);
+                //console.log("取得登錄者個人資料成功",getProfileRes.data);
                 dispatch(userProfileDataUp(getProfileRes.data.userData));
                 return getProfileRes.data.userData;
             } catch (error) {
@@ -48,7 +48,7 @@ export const profileSlice = createSlice({
         async (_, { dispatch,rejectWithValue }) => {
             try {
                 const createProfileRes = await axios.post("/api/profile/createProfile");
-                console.log("建立登錄者個人資料成功",createProfileRes.data);
+                //console.log("建立登錄者個人資料成功",createProfileRes.data);
                 return {
                     message:"建立登錄者個人資料成功",
                 };
@@ -67,7 +67,7 @@ export const profileSlice = createSlice({
         async (profileData, { dispatch,rejectWithValue }) => {
             try {
                 const updateProfileRes = await axios.put("/api/profile/updateProfile", profileData);
-                console.log("更新登錄者個人資料成功",updateProfileRes.data);
+                //console.log("更新登錄者個人資料成功",updateProfileRes.data);
                 return updateProfileRes.data;
             } catch (error) {
                 return rejectWithValue(

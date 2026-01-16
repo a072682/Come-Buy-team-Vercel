@@ -20,7 +20,7 @@ export const messageSlice = createSlice({
         async ( {messageData},{ dispatch,rejectWithValue } ) => {
             try {
                 const messageDataUpLoadRef = await axios.post(`/api/message/messageUpLoad`,messageData);
-                console.log("會員留言上傳成功:",messageDataUpLoadRef.data);
+                //console.log("會員留言上傳成功:",messageDataUpLoadRef.data);
                 return(messageDataUpLoadRef.data);
             } catch (error) {
                 console.log("會員留言上傳失敗",error.response.data);
