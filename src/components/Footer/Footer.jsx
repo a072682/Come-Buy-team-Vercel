@@ -70,17 +70,20 @@ function Footer() {
 
               <div className="text-box d-flex flex-column row-gap-16 row-gap-xl-24">
                 <span className="fs-16 fw-medium fs-xl-24 footer-text-set">
-                  <Link className="a-re text-white text-decoration-none" href="/EstimatePage">
+                  <Link className="a-re text-white text-decoration-none" 
+                        href="/EstimatePage">
                     線上估價
                   </Link>
                 </span>
                 <span className="fs-16 fw-medium fs-xl-24 footer-text-set">
-                  <Link className="a-re text-white text-decoration-none" href="/IndexPage">
+                  <Link className="a-re text-white text-decoration-none" 
+                        href="/">
                     服務項目
                   </Link>
                 </span>
                 <span className="fs-16 fw-medium fs-xl-24 footer-text-set">
-                  <Link className="a-re text-white text-decoration-none" href="/IndexPage">
+                  <Link className="a-re text-white text-decoration-none" 
+                        href={{ pathname: "/", hash: "#news" }}>
                     最新消息
                   </Link>
                 </span>
@@ -88,30 +91,35 @@ function Footer() {
 
               <div className="text-box d-flex flex-column row-gap-16 row-gap-xl-24">
                 <span className="fs-16 fw-medium fs-xl-24 footer-text-set">
-                  <Link className="a-re text-white text-decoration-none" href="/MateriaPage">
+                  <Link className="a-re text-white text-decoration-none" 
+                        href="/MaterialPage">
                     材料介紹
                   </Link>
                 </span>
                 <span className="fs-16 fw-medium fs-xl-24 footer-text-set">
-                  <Link className="a-re text-white text-decoration-none" href="/AboutusPage">
+                  <Link className="a-re text-white text-decoration-none" 
+                        href="/AboutUsPage">
                     公司介紹
                   </Link>
                 </span>
                 <span className="fs-16 fw-medium fs-xl-24 footer-text-set">
-                  <Link className="a-re text-white text-decoration-none" href="/QaPage">
-                    售後服務
+                  <Link className="a-re text-white text-decoration-none" 
+                        href={{ pathname: "/QAPage", query: { tab: "常見問題" } }}>
+                    常見問題
                   </Link>
                 </span>
               </div>
 
               <div className="text-box d-flex flex-column row-gap-16 row-gap-xl-24">
                 <span className="fs-16 fw-medium fs-xl-24 footer-text-set">
-                  <Link className="a-re text-white text-decoration-none" href="/QaPage">
+                  <Link className="a-re text-white text-decoration-none" 
+                        href={{ pathname: "/QAPage", query: { tab: "運費說明" } }}>
                     運費說明
                   </Link>
                 </span>
                 <span className="fs-16 fw-medium fs-xl-24 footer-text-set">
-                  <Link className="a-re text-white text-decoration-none" href="/AboutusPage">
+                  <Link className="a-re text-white text-decoration-none" 
+                        href={{ pathname: "/AboutUsPage", hash: "#contactUs" }}>
                     聯絡我們
                   </Link>
                 </span>

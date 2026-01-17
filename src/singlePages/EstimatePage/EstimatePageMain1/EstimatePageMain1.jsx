@@ -22,7 +22,7 @@ function EstimatePageMain1({ loginState, orderData, setOrderData, triggerSet, fa
     //#region 本地圖片顯示狀態
         const [previewUrl, setPreviewUrl] = useState('');         // 本地預覽 URL
         useEffect(()=>{
-            console.log("圖片資料:",previewUrl)
+            //console.log("圖片資料:",previewUrl)
         },[previewUrl]);
     //#endregion
 
